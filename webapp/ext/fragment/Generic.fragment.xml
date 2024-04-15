@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:commons="sap.suite.ui.commons"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    <f:SimpleForm id="formGeneric"
+        editable="false"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="4"
+        emptySpanL="4"
+        emptySpanM="4"
+        emptySpanS="0"
+        columnsXL="1"
+        columnsL="1"
+        columnsM="1"
+        singleContainerFullSize="false">
+        <f:content>
+            <Label text="{i18n>equipment}" />
+            <Text text="{Equipment} - {EquipmentName}" />
+
+            <Label text="{i18n>part}" />
+            <Text text="{notitemModel>/MaintNotifObjPrtCode} - {notitemModel>/to_MaintNotifObjPrtCode/InspectionCode_Text}" />
+
+            <Label text="{i18n>damagePicture}" />
+            <Text text="{notitemModel>/MaintNotificationDamageCode} - {notitemModel>/to_MaintNotificationDamageCode/InspectionCode_Text}" />
+
+            <Label id="lblItemText" text="{i18n>positionShortText}" />
+            <HBox>
+                <Text id="txtItemText" text="{notitemModel>/MaintNotifItemText}" />
+                <Button id="btnItemLong" icon="sap-icon://document-text" press="getLongtext" 
+                    data:name="{notitemModel>/ObjectKey}" data:object="QMFE" 
+                    tooltip="{i18n>longtext}" class="sapUiTinyMarginBegin" />
+            </HBox>
+
+            <!-- Ursachen: @todo Liste -->
+            <Label text="{i18n>cause}" />
+            <VBox id="vbCause">
+                <Text text="{notitemModel>/to_MaintenanceNotificationCause/results/0/MaintNotificationCauseCode} - {notitemModel>/to_MaintenanceNotificationCause/results/0/to_MaintNotificationCauseCode/InspectionCode_Text} - {notitemModel>/to_MaintenanceNotificationCause/results/0/MaintNotifCauseText}" />
+            </VBox>
+            <!-- Positionsaktionen -->
+            <Label text="{i18n>damagePosition}" />
+            <VBox id="vbDamagePosition">
+                <Text text="-" />
+            </VBox>
+
+
+        </f:content>
+    </f:SimpleForm>
+
+</core:FragmentDefinition>

@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:commons="sap.suite.ui.commons"
+	xmlns:f="sap.ui.layout.form">
+
+    <f:SimpleForm id="formBasic"
+        editable="false"
+        layout="ResponsiveGridLayout"
+        labelSpanXL="3"
+        labelSpanL="3"
+        labelSpanM="3"
+        labelSpanS="12"
+        adjustLabelSpan="false"
+        emptySpanXL="4"
+        emptySpanL="4"
+        emptySpanM="4"
+        emptySpanS="0"
+        columnsXL="1"
+        columnsL="1"
+        columnsM="1"
+        singleContainerFullSize="false">
+        <f:content>
+            <Label text="{i18n>notificationNumber}" />
+            <Text text="{MaintenanceNotification}" />
+
+            <Label id="lblNotifText" text="{i18n>notificationShortText}" />
+            <HBox>
+                <Text id="txtNotifText" text="{NotificationText}" />
+                <Button id="btnNotifLong" icon="sap-icon://document-text" visible="{= ${NotificationHasLongText} === 'X' }" press="getLongtext" tooltip="{i18n>longtext}" class="sapUiTinyMarginBegin" />
+            </HBox>
+
+            <Label text="{i18n>customerNumber}" />
+            <Text text="{partnerModel>/Partner}" />
+
+            <Label text="{i18n>case}" />
+            <Text text="{MaintNotificationCode} - {MaintNotificationCode_Text}" />
+
+            <Label text="{i18n>caseShortText}" />
+            <Text text="{notifModel>/NotificationText}" />
+            <!--Text text="??? - to do - ???" /-->
+
+            <Label text="{i18n>kindOfCommunication}" />
+            <VBox id="vbKoc">
+                <Text text="-" />
+            </VBox>
+
+            <Label text="{i18n>vehicle}" />
+            <Text text="{FunctionalLocation} - {FunctionalLocationName}" />
+
+            <Label text="{i18n>@SYSTEM_STATUS}" />
+            <Text text="{ConcatenatedActiveSystStsName}" />
+
+            <Label text="{i18n>actualUserStatus}" />
+            <Text text="{userstatusModel>/languageSpecificStatus} - {userstatusModel>/technicalStatusDescription}" />
+
+            <Label text="{i18n>setUserStatus}" visible="{= ${UserStatus} !== 'MEAK'}" />
+            <Select id="selUserStatNew" enabled="{originvaluesModel>/isEnabled}" autoAdjustWidth="false" visible="{= ${UserStatus} !== 'MEAK'}"
+                items="{userstatusModel>/to_UserStatToBe/results}">
+                    <core:Item text="{userstatusModel>languageSpecificStatusTobe} - {userstatusModel>technicalStatusDescriptionToBe}" key="{userstatusModel>languageSpecificStatusTobe}"/>
+            </Select>
+
+            <!-- communication -->
+
+        </f:content>
+    </f:SimpleForm>
+
+</core:FragmentDefinition>

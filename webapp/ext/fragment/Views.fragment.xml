@@ -1,0 +1,176 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:commons="sap.suite.ui.commons"
+	xmlns:f="sap.ui.layout.form">
+
+    <FlexBox alignItems="Start" justifyContent="Start">
+        <f:SimpleForm id="formClientView"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="12"
+			labelSpanL="12"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<!-- Client -->
+				<core:Title text="{i18n>viewCustomer}" />
+                <Label text="{i18n>createDate}" />
+				<Text text="{path: 'viewsModel>/Viewclient/Viewdate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionBeginDate}" />
+				<Text text="{path: 'viewsModel>/Viewclient/Malfunctionstartdate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionBeginTime}" />
+				<Text text="{path: 'viewsModel>/Viewclient/Malfunctionstarttime', formatter: '.formatDatewithPT'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionEndDate}" />
+				<Text text="{path: 'viewsModel>/Viewclient/Malfunctionenddate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionEndTime}" />
+				<Text text="{path: 'viewsModel>/Viewclient/Malfunctionendtime', formatter: '.formatDatewithPT'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>responsibleParty} / {i18n>damageCausingParty}" />
+				<Text text="{viewsModel>/Viewclient/Responsiblepartycode} - {viewsModel>/Viewclient/Responsiblepartytext}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+				
+				<Label text="{i18n>issueCategory}" />
+				<Text text="{viewsModel>/Viewclient/Malfunctioneffect} - {viewsModel>/Viewclient/Malfunctioneffecttext}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                <!-- Attributes -->
+
+			</f:content>
+		</f:SimpleForm>
+        <f:SimpleForm id="formStadlerView"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="12"
+			labelSpanL="12"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<!-- Stadler -->
+				<core:Title text="{i18n>viewStadler}" />
+                <Label text="{i18n>changeDate}" />
+				<Text text="{path: 'viewsModel>/Viewstadler/Viewdate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionBeginDate}" />
+				<Text text="{path: 'viewsModel>/Viewstadler/Malfunctionstartdate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionBeginTime}" />
+				<Text text="{path: 'viewsModel>/Viewstadler/Malfunctionstarttime', formatter: '.formatDatewithPT'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+
+				<Label text="{i18n>malfunctionEndDate}" />
+				<Text text="{path: 'viewsModel>/Viewstadler/Malfunctionenddate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                
+				<Label text="{i18n>malfunctionEndTime}" />
+				<Text text="{path: 'viewsModel>/Viewstadler/Malfunctionendtime', formatter: '.formatDatewithPT'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+
+				<Label text="{i18n>responsibleParty} / {i18n>damageCausingParty}" />
+				<Text text="{viewsModel>/Viewstadler/Responsiblepartycode} - {viewsModel>/Viewstadler/Responsiblepartytext}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+				
+				<Label text="{i18n>issueCategory}" />
+				<Text text="{viewsModel>/Viewstadler/Malfunctioneffect} - {viewsModel>/Viewstadler/Malfunctioneffecttext}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+                <!-- Attributes -->
+
+			</f:content>
+		</f:SimpleForm>
+        <f:SimpleForm id="formCommonView"
+			visible="{= ${UserStatus} === 'MAKU' || ${UserStatus} === 'MEKU' || ${UserStatus} === 'MEAK' }"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="12"
+			labelSpanL="12"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<!-- Common -->
+				<core:Title text="{i18n>viewCommon}" />
+                <Label text="{i18n>changeDate}" />
+				<Text text="{path: 'viewsModel>/Viewcommon/Viewdate', formatter: '.getDateAsString'}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" />
+	
+                <Label text="{i18n>malfunctionBeginDate}" />
+				<DatePicker id="dtMalBeg" enabled="{originvaluesModel>/isEnabled}"
+					value="{
+						'path':'viewsModel>/Viewcommon/Malfunctionstartdate',
+						'type':'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'dd.MM.yyyy'
+						}
+					}" 
+					placeholder="{i18n>malfunctionBeginDate}" width="150px" />
+
+				<Label text="{i18n>malfunctionBeginTime}" />
+				<TimePicker id="timeMalBegin" enabled="{originvaluesModel>/isEnabled}"
+					value="{path: 'viewsModel>/Viewcommon/Malfunctionstarttime', formatter: '.formatDatewithPT'}"
+					valueFormat="HH:mm:ss"
+					displayFormat="HH:mm"
+					maskMode="On"
+					placeholder="{i18n>malfunctionBeginTime}" width="150px" />
+				
+                <Label text="{i18n>malfunctionEndDate}" />
+				<DatePicker id="dtMalEnd" enabled="{originvaluesModel>/isEnabled}"
+					value="{
+						'path':'viewsModel>/Viewcommon/Malfunctionenddate',
+						'type':'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'dd.MM.yyyy'
+						}
+					}" 
+					placeholder="{i18n>malfunctionEndDate}" width="150px" />
+
+				<Label text="{i18n>malfunctionEndTime}" />
+				<TimePicker id="timeMalEnd" enabled="{originvaluesModel>/isEnabled}"
+					value="{path: 'viewsModel>/Viewcommon/Malfunctionendtime', formatter: '.formatDatewithPT'}"
+					valueFormat="HH:mm:ss"
+					displayFormat="HH:mm"
+					maskMode="On"
+					placeholder="{i18n>malfunctionEndTime}" width="150px" />
+				
+				<Label text="{i18n>responsibleParty} / {i18n>damageCausingParty}" />
+				<!--Text text="{viewsModel>/Viewcommon/Responsiblepartycode} - {viewsModel>/Viewcommon/Responsiblepartytext}" class="sapUiTinyMarginTop sapUiTinyMarginBottom" /-->
+                <Select id="selResponsible" enabled="{originvaluesModel>/isEnabled}" autoAdjustWidth="false"
+					selectedKey="{viewsModel>/Viewcommon/Responsiblepartycode}"
+					items="{viewsModel>/COMMON_VIEW_RESPONSIBLEP_VHSet/results}">
+						<core:Item text="{viewsModel>Responsiblepartycode} - {viewsModel>Responsiblepartytext}" key="{viewsModel>Responsiblepartycode}"/>
+				</Select>
+
+				<Label text="{i18n>issueCategory}" />
+				<!--Input value="{viewsModel>/Viewcommon/Malfunctioneffect} - {viewsModel>/Viewcommon/Malfunctioneffecttext}" /-->
+				<Select id="selMalfunction" enabled="{originvaluesModel>/isEnabled}" autoAdjustWidth="false"
+					selectedKey="{viewsModel>/Viewcommon/Malfunctioneffect}"
+					items="{viewsModel>/COMMON_VIEW_MALFUNCTEFFECT_VHSet/results}">
+						<core:Item text="{viewsModel>Malfunctioneffect} - {viewsModel>Malfunctioneffecttext}" key="{viewsModel>Malfunctioneffect}"/>
+				</Select>
+                <!-- Attributes -->
+				
+			</f:content>
+		</f:SimpleForm>
+	</FlexBox>
+
+</core:FragmentDefinition>

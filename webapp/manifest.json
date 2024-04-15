@@ -1,0 +1,219 @@
+{
+  "_version": "1.37.0",
+  "sap.app": {
+      "id": "com.stadler.pm.notification",
+      "type": "application",
+      "i18n": "i18n/i18n.properties",
+      "applicationVersion": {
+          "version": "0.6.6"
+      },
+      "title": "{{appTitle}}",
+      "description": "{{appDescription}}",
+      "resources": "resources.json",
+      "sourceTemplate": {
+          "id": "@sap/generator-fiori:lrop",
+          "version": "1.9.4",
+          "toolsId": "76f092a5-1fce-4988-ac82-72ace8ad129a"
+      },
+      "dataSources": {
+          "mainService": {
+              "uri": "/sap/opu/odata/srail/NOTIFICATION_SRV/",
+              "type": "OData",
+              "settings": {
+                  "annotations": [
+                      "/SRAIL/NOTIFICATION_ANNO_MDL",
+                      "annotation"
+                  ],
+                  "localUri": "localService/metadata.xml",
+                  "odataVersion": "2.0"
+              }
+          },
+          "/SRAIL/NOTIFICATION_ANNO_MDL": {
+              "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='%2FSRAIL%2FNOTIFICATION_ANNO_MDL',Version='0001')/$value/",
+              "type": "ODataAnnotation",
+              "settings": {
+                  "localUri": "localService//SRAIL/NOTIFICATION_ANNO_MDL.xml"
+              }
+          },
+          "annotation": {
+              "type": "ODataAnnotation",
+              "uri": "annotations/annotation.xml",
+              "settings": {
+                  "localUri": "annotations/annotation.xml"
+              }
+          }
+      }
+  },
+  "sap.ui": {
+      "technology": "UI5",
+      "icons": {
+          "icon": "",
+          "favIcon": "",
+          "phone": "",
+          "phone@2": "",
+          "tablet": "",
+          "tablet@2": ""
+      },
+      "deviceTypes": {
+          "desktop": true,
+          "tablet": true,
+          "phone": true
+      }
+  },
+  "sap.ui5": {
+      "flexEnabled": true,
+      "dependencies": {
+          "minUI5Version": "1.96.6",
+          "libs": {
+              "sap.m": {},
+              "sap.ui.core": {},
+              "sap.ushell": {},
+              "sap.f": {},
+              "sap.ui.comp": {},
+              "sap.ui.generic.app": {},
+              "sap.suite.ui.generic.template": {}
+          }
+      },
+      "contentDensities": {
+          "compact": true,
+          "cozy": true
+      },
+      "models": {
+          "i18n": {
+              "type": "sap.ui.model.resource.ResourceModel",
+              "settings": {
+                  "bundleName": "com.stadler.pm.notification.i18n.i18n"
+              }
+          },
+          "": {
+              "dataSource": "mainService",
+              "preload": true,
+              "settings": {
+                  "defaultBindingMode": "TwoWay",
+                  "defaultCountMode": "Inline",
+                  "refreshAfterChange": false
+              }
+          },
+          "@i18n": {
+              "type": "sap.ui.model.resource.ResourceModel",
+              "uri": "i18n/i18n.properties"
+          }
+      },
+      "resources": {
+          "css": []
+      },
+      "routing": {
+          "config": {},
+          "routes": [],
+          "targets": {}
+      },
+      "extends": {
+          "extensions": {
+              "sap.ui.controllerExtensions": {
+                  "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                      "controllerName": "com.stadler.pm.notification.ext.controller.ListReportExt"
+                  },
+                  "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                      "controllerName": "com.stadler.pm.notification.ext.controller.ObjectPageExt",
+                      "sap.ui.generic.app": {
+                          "xSRAILxPM_NOTIFICATION": {
+                              "EntitySet": "xSRAILxPM_NOTIFICATION",
+                              "Header": {
+                                  "Actions": {
+                                      "save": {
+                                          "id": "saveButton",
+                                          "text": "{{save}}",
+                                          "press": "save",
+                                          "requiresSelection": false
+                                      },
+                                      "cancel": {
+                                          "id": "cancelButton",
+                                          "text": "{{cancel}}",
+                                          "press": "cancel",
+                                          "requiresSelection": false
+                                      },
+                                      "createWarranty": {
+                                          "id": "createWarrantyButton",
+                                          "text": "{{createWarranty}}",
+                                          "press": "createWarrantyNotification",
+                                          "requiresSelection": false
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "sap.ui.viewExtensions": {
+                  "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                      "BeforeFacet|xSRAILxPM_NOTIFICATION|History": {
+                          "type": "XML",
+                          "className": "sap.ui.core.Fragment",
+                          "fragmentName": "com.stadler.pm.notification.ext.fragment.Basic",
+                          "sap.ui.generic.app": {
+                              "title": "{{basicData}}"
+                          }
+                      },
+                      "BeforeFacet|xSRAILxPM_NOTIFICATION|History|1": {
+                          "type": "XML",
+                          "className": "sap.ui.core.Fragment",
+                          "fragmentName": "com.stadler.pm.notification.ext.fragment.Generic",
+                          "sap.ui.generic.app": {
+                              "title": "{{genericData}}"
+                          }
+                      },
+                      "BeforeFacet|xSRAILxPM_NOTIFICATION|History|2": {
+                          "type": "XML",
+                          "className": "sap.ui.core.Fragment",
+                          "fragmentName": "com.stadler.pm.notification.ext.fragment.Views",
+                          "sap.ui.generic.app": {
+                              "title": "{{views}}"
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  },
+  "sap.ui.generic.app": {
+      "_version": "1.3.0",
+      "settings": {
+          "forceGlobalRefresh": false,
+          "objectPageHeaderType": "Dynamic",
+          "considerAnalyticalParameters": true,
+          "showDraftToggle": false
+      },
+      "pages": {
+          "ListReport|xSRAILxPM_NOTIFICATION": {
+              "entitySet": "xSRAILxPM_NOTIFICATION",
+              "component": {
+                  "name": "sap.suite.ui.generic.template.ListReport",
+                  "list": true,
+                  "settings": {
+                      "condensedTableLayout": true,
+                      "smartVariantManagement": true,
+                      "enableTableFilterInPageVariant": true,
+                      "filterSettings": {
+                          "dateSettings": {
+                              "useDateRange": true
+                          }
+                      }
+                  }
+              },
+              "pages": {
+                  "ObjectPage|xSRAILxPM_NOTIFICATION": {
+                      "entitySet": "xSRAILxPM_NOTIFICATION",
+                      "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                      "component": {
+                          "name": "sap.suite.ui.generic.template.ObjectPage"
+                      }
+                  }
+              }
+          }
+      }
+  },
+  "sap.fiori": {
+      "registrationIds": [],
+      "archeType": "transactional"
+  }
+}

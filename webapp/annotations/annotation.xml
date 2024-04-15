@@ -1,0 +1,259 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/srail/NOTIFICATION_SRV/$metadata">
+        <edmx:Include Namespace="SRAIL.NOTIFICATION_SRV"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+            <Annotations Target="SRAIL.NOTIFICATION_SRV.xSRAILxPM_NOTIFICATIONType/UserStatus">
+                <Annotation Term="Common.Label" String="{@i18n>userStatus}"/>
+            </Annotations>
+            
+            <Annotations Target="SRAIL.NOTIFICATION_SRV.xSRAILxPM_NOTIFICATIONType/NotificationType">
+                <Annotation Term="UI.Hidden" />
+				<Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+			<!--Annotations Target="SRAIL.NOTIFICATION_SRV.xSRAILxPM_NOTIFICATIONType/CreatedByUser">
+                <Annotation Term="UI.Hidden" />
+				<Annotation Term="UI.HiddenFilter" />
+            </Annotations>
+			<Annotations Target="SRAIL.NOTIFICATION_SRV.xSRAILxPM_NOTIFICATIONType/PersonResponsible">
+                <Annotation Term="UI.Hidden" />
+				<Annotation Term="UI.HiddenFilter" />
+            </Annotations-->
+
+<!--            
+            <Annotations Target="SRAIL.NOTIFICATION_SRV.xSRAILxPM_NOTIFICATIONType/MaintenanceNotification">
+                <Annotation Term="Common.FilterDefaultValue" String="300000516"/>
+            </Annotations>
+-->
+            <Annotations Target="SRAIL.NOTIFICATION_SRV.xSRAILxPM_NOTIFICATIONType">
+                <!-- Filter -->
+                <!--Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>UserStatus</PropertyPath>
+                    </Collection>
+                </Annotation-->
+
+				<!-- List Title / Object Page Header -->
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="{@i18n>tableTitle}" />
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>tableTitles}" />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="MaintenanceNotification" />
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                
+                
+                <!-- Fields -->  
+                <!--
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProcessState"/>
+                            <PropertyValue Property="Label" String="{@i18n>procState}" />
+                        </Record>
+                        
+                    </Collection>
+                </Annotation>
+                -->
+
+				<!-- 
+                <Annotation Term="UI.SelectionVariant">
+                    <Record>
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="MaintenanceNotification" />
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign" />
+                                                <PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option" />
+                                                <PropertyValue Property="Low" String="300000516" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                                
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="NotificationType" />
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign" />
+                                                <PropertyValue EnumMember="UI.SelectionRangeOptionType/EQ" Property="Option" />
+                                                <PropertyValue Property="Low" String="ZA" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                               
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+				 -->
+
+                <Annotation Term="UI.HeaderFacets">
+					<Collection>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="ID" String="Importantinfo1"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="ID" String="HeaderGeneral"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#HeaderGeneral" Property="Target"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="ID" String="Importantinfo2"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="ID" String="HeaderReference"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#HeaderReference" Property="Target"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="ID" String="Importantinfo3"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="ID" String="HeaderStatus"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#HeaderStatus" Property="Target"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<!--
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/>
+							<PropertyValue Property="ID" String="GeneralInformation"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Label" String="{@i18n&gt;@NotificationInfoFacetLabel}"/>
+										<PropertyValue Property="ID" String="NotificationInfo"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#Info" Property="Target"/>
+										<Annotation Term="UI.PartOfPreview" Bool="true"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Label" String="{@i18n&gt;@ResponsibilityFacetLabel}"/>
+										<PropertyValue Property="ID" String="Responsibilities"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#Responsibility" Property="Target"/>
+										<Annotation Term="UI.PartOfPreview" Bool="true"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/>
+										<PropertyValue Property="ID" String="General"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#General" Property="Target"/>
+										<Annotation Term="UI.PartOfPreview" Bool="true"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<Annotation Term="UI.PartOfPreview" Bool="false"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="{@i18n>@MalfunctionFacetLabel}"/>
+							<PropertyValue Property="ID" String="MalfunctionInformation"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="ID" String="Malfunction1"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#Malfunction1" Property="Target"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="ID" String="Malfunction2"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#Malfunction2" Property="Target"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="ID" String="Malfunction3"/>
+										<PropertyValue AnnotationPath="@UI.FieldGroup#Malfunction3" Property="Target"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@MaintenanceHeaderItemListFacetLabel}"/>
+							<PropertyValue Property="ID" String="Item"/>
+							<PropertyValue AnnotationPath="to_ObjPgMaintNotificationItem/@UI.LineItem" Property="Target"/>
+						</Record>
+						
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@MaintenanceHeaderActivityFacetLabel}"/>
+							<PropertyValue Property="ID" String="Activity"/>
+							<PropertyValue AnnotationPath="to_ObjPgMaintNotifActivity/@UI.LineItem" Property="Target"/>
+						</Record>
+						-->
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@MaintenanceHeaderHistoryFacetLabel}"/>
+							<PropertyValue Property="ID" String="History"/>
+							<PropertyValue AnnotationPath="to_MaintNotificationChgHistory/@UI.LineItem" Property="Target"/>
+						</Record>
+
+						<Record Type="UI.CollectionFacet">
+							<Annotation Term="UI.IsSummary" Bool="false"/>
+							<Annotation Term="UI.PartOfPreview" Bool="false"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;@STATUS}">
+								<Annotation Term="UI.MultiLineText" Bool="false"/>
+							</PropertyValue>
+							<PropertyValue Property="ID" String="CF_Status">
+								<Annotation Term="UI.MultiLineText" Bool="false"/>
+							</PropertyValue>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.CollectionFacet">
+										<Annotation Term="UI.IsSummary" Bool="false"/>
+										<Annotation Term="UI.PartOfPreview" Bool="false"/>
+										<PropertyValue Property="Label" String="{@i18n&gt;@SYSTEM_STATUS}">
+											<Annotation Term="UI.MultiLineText" Bool="false"/>
+										</PropertyValue>
+										<PropertyValue Property="ID" String="CF_SystemStatus">
+											<Annotation Term="UI.MultiLineText" Bool="false"/>
+										</PropertyValue>
+										<PropertyValue Property="Facets">
+											<Collection>
+												<Record Type="UI.ReferenceFacet">
+													<PropertyValue Property="ID" String="SystemStatusFacet"/>
+													<PropertyValue Property="Target" AnnotationPath="to_SystemStatus/@UI.LineItem"/>
+												</Record>
+											</Collection>
+										</PropertyValue>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</Annotation>
+
+            </Annotations>
+
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

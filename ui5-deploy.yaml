@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: com.stadler.pm.notificationcomparison
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: sap-s4d-100-http
+          url: http://sap-s4d:443
+        app:
+          name: /SRAIL/PM_NOT_COMP
+          description: Maintenance notification comparison
+          package: /SRAIL/PM_NOTIFICATION
+          transport: S4DK925389
+        exclude:
+          - /test/
